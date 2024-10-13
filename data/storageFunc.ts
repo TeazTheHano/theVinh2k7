@@ -36,7 +36,7 @@ export default storage;
  * @param data - The user data to be saved.
  * @returns A promise that resolves to `true` if the data was saved successfully, or `false` if there was an error.
  */
-export const saveUser = async (data: UserFormat) => {
+export const saveUser = async (data: UserFormat): Promise<boolean> => {
   try {
     await storage.save({
       key: 'user',

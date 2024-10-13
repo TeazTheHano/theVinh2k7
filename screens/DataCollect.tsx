@@ -67,10 +67,10 @@ export default function DataCollect({ route }: any) {
                     if (res) {
                         console.log('Data saved');
                         navigation.navigate('BottomTab' as never);
+                        dispatch(CUSTOMCACHE.currentSetUser(userData))
                     }
                 })
             }
-            // TODO: firebase save
 
         } else if (!act && currentStep === 0) {
             setShowGoBack(true);
@@ -91,6 +91,7 @@ export default function DataCollect({ route }: any) {
                         passiveColor={NGHIASTYLE.NghiaGray500 as string}
                         title='Your Name'
                         value={userName}
+                        autoCap='words'
                         onChgText={setUserName as React.Dispatch<React.SetStateAction<string | number>>}
                     />)
             case 1:

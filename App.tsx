@@ -11,16 +11,12 @@ import DataCollect from './screens/DataCollect';
 import clrStyle from './assets/componentStyleSheet';
 import { ColorValue } from 'react-native';
 
-// import Home from './screens/Home';
-// import BottomTab from './assets/BottomTab';
-// import Cart from './screens/Cart';
-// import DrugList from './screens/DrugList';
-// import Pillport from './screens/Pillport';
+import BottomTab from './assets/BottomTab';
+import Home from './screens/Home';
+import Podcast from './screens/Podcast';
+import Explore from './screens/Explore';
+import User from './screens/User';
 // >>>>>>>>>>
-// import OrderDetail from './screens/OrderDetail';
-// import InCateList from './screens/InCateList';
-// import PillDetail from './screens/PillDetail';
-// import Purchase from './screens/Purchase';
 
 // ____________________END OF IMPORT_______________________
 
@@ -33,15 +29,11 @@ function App(): React.JSX.Element {
           {/* <Stack.Screen name="BottomTab" component={BottomTab} /> */}
           <Stack.Screen name="Onboard" component={Onboard} />
           <Stack.Screen name="DataCollect" component={DataCollect} />
-          {/* <Stack.Screen name="Home" component={Home} />
-          <Stack.Screen name="Cart" component={Cart} />
-          <Stack.Screen name="DrugList" component={DrugList} />
-          <Stack.Screen name="Pillport" component={Pillport} /> */}
-          {/* >>> */}
-          {/* <Stack.Screen name="OrderDetail" component={OrderDetail} />
-          <Stack.Screen name="InCateList" component={InCateList} />
-          <Stack.Screen name="PillDetail" component={PillDetail} />
-          <Stack.Screen name="Purchase" component={Purchase} /> */}
+          <Stack.Screen name="BottomTab" component={BottomTab} />
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Podcast" component={Podcast} />
+          <Stack.Screen name="Explore" component={Explore} />
+          <Stack.Screen name="User" component={User} />
         </Stack.Navigator>
       </NavigationContainer>
     </ProviderTotal>
