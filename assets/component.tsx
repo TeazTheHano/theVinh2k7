@@ -1,6 +1,7 @@
 // system imports
-import React, { Component, ComponentType, ReactElement, ReactNode, useContext, useEffect, useRef, useState } from "react";
-import { Text, View, TextInput, TouchableOpacity, Image, FlatList, ImageBackground, Alert, Share, StatusBar, ImageStyle, Platform, PermissionsAndroid } from "react-native";
+import React, { Component, ComponentType, ReactElement, ReactNode, useCallback, useContext, useEffect, useRef, useState } from "react";
+import { Text, View, TextInput, TouchableOpacity, Image, FlatList, ImageBackground, Alert, Share, StatusBar, ImageStyle, Platform } from "react-native";
+import { PermissionsAndroid } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Dimensions } from "react-native";
 
@@ -8,10 +9,14 @@ import { Dimensions } from "react-native";
 import styles from "./stylesheet";
 import { vw, vh, vmax, vmin } from './stylesheet';
 import Svg, { SvgXml } from 'react-native-svg';
+import clrStyle, { componentStyle } from "./componentStyleSheet";
 
 // SVG import
-import { searchIcon, shareIcon, } from "./svgXml";
-import clrStyle, { componentStyle } from "./componentStyleSheet";
+import * as SVG from "./svgXml";
+
+import * as FORMATDATA from '../data/interfaceFormat'
+import * as CUSTOMCACHE from '../data/store'
+import * as STORAGEFNC from '../data/storageFunc'
 
 // font import 
 
@@ -61,7 +66,7 @@ export const onShare = async () => {
     }
 };
 
-export const ListGen = (data: string | Array<string | string[]>, FontClass1st: ComponentType<any>, useColor: string = clrStyle.white, FontClass2nd: ComponentType<any> = FontClass1st, bullet1st: string = '1', bullet2nd: string = '-', textIndent2nd: any = 0) => {
+export const ListGen = (data: string | Array<string | string[]>, FontClass1st: ComponentType<any>, useColor: string = clrStyle.white as string, FontClass2nd: ComponentType<any> = FontClass1st, bullet1st: string = '1', bullet2nd: string = '-', textIndent2nd: any = 0) => {
     function bulletMark(bullet: string, index: number) {
         let i = index == 0 ? 0 : index % 2 == 0 ? index / 2 : index
         if (bullet === 'a') {
@@ -207,19 +212,132 @@ export function formatNumber(num: number, changeToChar: boolean = true) {
 //     return result;
 // }
 
-export const onRefresh = React.useCallback(() => {
-    // setRefreshing(true);
-    // setTimeout(() => {
-    //     setRefreshing(false);
-    //     navigation.reset({
-    //         index: 0,
-    //         routes: [{ name: 'Home' as never }],
-    //     });
-    // }, 1000);
-}, []);
+export const onRefresh = (refreshFnc: (item: boolean) => void, navFnc: any) => {
+    const handleRefresh = useCallback(() => {
+        refreshFnc(true);
+        setTimeout(() => {
+            refreshFnc(false);
+            navFnc.reset({
+                index: 0,
+                routes: [{ name: 'Home' as never }],
+            });
+        }, 1000);
+    }, [navFnc]);
+
+    return handleRefresh;
+};
 
 export const showInDeverlopFnc = () => {
     return Alert.alert('This function is in development')
 }
 
+
+// img picker and camera.
+// require >>>> react-native-image-picker <<<< package
+import { CameraOptions, launchCamera, launchImageLibrary } from 'react-native-image-picker';
+
+const defaultCameraOptions: CameraOptions = {
+    mediaType: 'photo',
+    quality: 1,
+};
+
+export const requestCameraPermission = async () => {
+    if (Platform.OS === 'android') {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.CAMERA,
+                {
+                    title: 'Camera Permission',
+                    message: 'This app needs camera access to take pictures',
+                    buttonNeutral: 'Ask Me Later',
+                    buttonNegative: 'Cancel',
+                    buttonPositive: 'OK',
+                },
+            );
+            console.log('Camera permission:', granted);
+            
+            return granted === PermissionsAndroid.RESULTS.GRANTED;
+        } catch (err) {
+            console.warn(err);
+            return false;
+        }
+    } else {
+        return true;
+    }
+};
+
+export const requestGalleryPermission = async () => {
+    if (Platform.OS === 'android') {
+        try {
+            const granted = await PermissionsAndroid.request(
+                PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+                {
+                    title: 'Gallery Permission',
+                    message: 'This app needs gallery access to take pictures',
+                    buttonNeutral: 'Ask Me Later',
+                    buttonNegative: 'Cancel',
+                    buttonPositive: 'OK',
+                },
+            );
+            return granted === PermissionsAndroid.RESULTS.GRANTED;
+        } catch (err) {
+            console.warn(err);
+            return false;
+        }
+    } else {
+        return true;
+    }
+}
+
+export const openCamera = async (saveImgFnc: (item: any) => void, options = defaultCameraOptions) => {
+    const hasPermission = await requestCameraPermission();
+    if (!hasPermission) {
+        console.log('Camera permission denied');
+        return;
+    }
+
+    try {
+        launchCamera(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.errorCode) {
+                console.log('ImagePicker Error: ', response.errorMessage);
+                Alert.alert('Error', response.errorMessage || response.errorCode);
+            } else if (response.assets && response.assets.length > 0) {
+                saveImgFnc(response.assets[0].uri);
+            }
+        });
+    } catch (error) {
+        console.error('Error launching camera:', error);
+        Alert.alert('Error', 'An unexpected error occurred while launching the camera.');
+    }
+};
+
+export const openGallery = async (saveImgFnc: (item: any) => void, options = defaultCameraOptions) => {
+    // const hasPermission = await requestGalleryPermission();
+    // if (!hasPermission) {
+    //     console.log('Gallery permission denied');
+    //     return;
+    // }
+
+    try {
+        launchImageLibrary(options, (response) => {
+            console.log('Response = ', response);
+
+            if (response.didCancel) {
+                console.log('User cancelled image picker');
+            } else if (response.errorCode) {
+                console.log('ImagePicker Error: ', response.errorMessage);
+                Alert.alert('Error', response.errorMessage || response.errorCode);
+            } else if (response.assets && response.assets.length > 0) {
+                saveImgFnc(response.assets[0].uri);
+            }
+        });
+    } catch (error) {
+        console.error('Error launching image library:', error);
+        Alert.alert('Error', 'An unexpected error occurred while launching the image library.');
+    }
+}
 // END OF UNIVERSE FUNCTION________________________________________

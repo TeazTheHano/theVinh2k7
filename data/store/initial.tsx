@@ -24,8 +24,7 @@ export interface Action {
 export const initialState: CurrentCache = {
     user: {
         name: '',
-        email: '',
-        password: '',
+        age: '',
         imgAddress: ''
     },
 };

@@ -1,70 +1,59 @@
-
 export interface UserFormat {
     name: string;
-    email: string;
-    password: string;
+    age: string;
     imgAddress: string;
 }
 
-export interface PillFormat {
-    pill_id: string;
-    pill_name: string;
-    pill_brand?: string;
-    pill_tags: string[]; // e.g. (thuốc giảm đau, thuốc hạ sốt)
-    pill_quantity: number; // e.g. (10)
-    pill_sellPrice: number; // e.g. (10000)
-    pill_buyPrice?: number; // e.g. (2000)
-    pill_packKind?: string; // e.g. (1 vỉ x 10 viên)
-    pill_imgAddress?: any[];
-    pill_indication?: (string | string[])[]; // e.g. (chỉ định)
-    pill_contraindication?: (string | string[])[]; // e.g. (chống chỉ định)
-    pill_description?: (string | string[])[]; // e.g. (mô tả)
-    pill_ingredient?: string[]; // e.g. (thành phần)
-    pill_use?: (string | string[])[]; // e.g. (cách dùng)
-    pill_dosage?: (string | string[])[]; // e.g. (liều lượng/ liều dùng)
-    pill_pharmacology?: string[]; // e.g. (cơ chế tác dụng/ dược lý)
-    pill_pharmacokinetics?: string[]; // e.g. (dược động học/ động học)
-    pill_sideEffects?: (string | string[])[]; // e.g. (tác dụng phụ)
-    pill_interactions?: (string | string[])[]; // e.g. (tương tác)
-    pill_precautions?: (string | string[])[]; // e.g. (cảnh báo)
-    pill_overdose?: (string | string[])[]; // e.g. (quá liều & quên liều)
-    pill_overdose_handling?: (string | string[])[]; // e.g. (xử lý quá liều)
-    pill_viewed?: number; // e.g. (10)
-    pill_favorite?: boolean;
+export interface BlogPostFormat {
+    id: number;
+    title: string;
+    character: string;
+    imgAddress: any;
+    readTime: string;
+    uploadDate: Date;
+    detail: BlogPostDetailFormat;
 }
 
-export interface PillPortFormat {
-    pillport_id: string;
-    pillport_name: string;
-    pillport_address: string;
+export interface BlogPostDetailFormat {
+    timeHappen: String;
+    context: String;
+    mainStory: String;
+    result: String;
+    image: any[];
+    links: string[];
 }
 
-export interface OrderFormat {
-    order_id: string;
-    order_user_id: string;
-    order_date: Date;
-    order_status: string;
-    order_total: number;
-    order_item_ids: string[];
-    order_item_quantity: number[];
-    order_pillPort_id: string;
-    order_paymentKind: string;
+export interface PostCartFormat {
+    id: number;
+    title: string;
+    numEps: number;
+    imgAddress: any;
+    uploadDate: Date;
+    detail: PostCartEpsFormat[];
 }
 
-export interface SearchResults {
-    pills: PillFormat[];
-    symptoms: string[];
-    orders: OrderFormat[];
-};
-
-export interface DataStorageFormat {
-    pillList: PillFormat[];
-    pillPortList: PillPortFormat[];
-    orderList: OrderFormat[];
-    lastChange: Date;
+export interface PostCartEpsFormat {
+    id: number;
+    title: string;
+    imgAddress: any;
+    link: string;
 }
 
-export interface CartFormat {
-    pill: PillFormat;
-    orderQuantity: number;
+export interface ThisDayThatYearFormat {
+    id: number;
+    title: string;
+    timePoint: Date;
+    content: string;
+    detail: BlogPostDetailFormat;
+}
+
+export interface HistoryPersonFormat {
+    id: number;
+    name: string;
+    nickName: string;
+    imgAddress: any;
+    detail: {
+        bio: string;
+        mainStory: string[];
+    }
 }

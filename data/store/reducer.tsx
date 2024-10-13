@@ -12,7 +12,7 @@
 //     }
 // }
 
-import { CartFormat, DataStorageFormat, OrderFormat, PillFormat, UserFormat } from "../interfaceFormat";
+import * as FormatData from "../interfaceFormat";
 import {
     initialState, Action, CurrentCache, SET_USER,
 
@@ -23,7 +23,7 @@ export default function setReducer(state = initialState, action: Action): Curren
         case SET_USER: {
             return {
                 ...state,
-                user: action.payload as UserFormat
+                user: action.payload as FormatData.UserFormat
             };
         }
 

@@ -41,6 +41,7 @@ export const NGHIASTYLE = StyleSheet.create({
     NghiaGray900: '#101828',
     NghiaGray800: '#1D2939',
     NghiaGray700: '#344054',
+    NghiaGray600: '#475467',
     NghiaGray500: '#667085',
     NghiaGray400: '#98A2B3',
     NghiaGray300: '#C5CAD1',
