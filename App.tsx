@@ -27,9 +27,9 @@ function App(): React.JSX.Element {
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false, contentStyle: { backgroundColor: clrStyle.white as ColorValue } }}>
           {/* <Stack.Screen name="BottomTab" component={BottomTab} /> */}
+          <Stack.Screen name="BottomTab" component={BottomTab} />
           <Stack.Screen name="Onboard" component={Onboard} />
           <Stack.Screen name="DataCollect" component={DataCollect} />
-          <Stack.Screen name="BottomTab" component={BottomTab} />
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="Podcast" component={Podcast} />
           <Stack.Screen name="Explore" component={Explore} />

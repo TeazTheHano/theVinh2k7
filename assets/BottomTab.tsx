@@ -14,12 +14,13 @@ import Explore from '../screens/Explore';
 import User from '../screens/User';
 
 import * as SVG from './svgXml';
-import { getUser, saveUser } from '../data/storageFunc';
+import * as STORAGEFNC from '../data/storageFunc'
 import { SvgXml } from 'react-native-svg';
 import * as CLASS from './Class';
 import clrStyle, { NGHIASTYLE } from './componentStyleSheet';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import * as CUSTOMCACHE from '../data/store';
+import { UserFormat } from '../data/interfaceFormat';
 
 const VH_VW = vw(100) > vh(100) ? true : false
 const BOTTOM_TAB_ICON_SIZE = VH_VW ? vh(6) : vw(6)
@@ -76,11 +77,11 @@ const BottomTab = () => {
 
     useEffect(() => {
         const fetchUser = async () => {
-            let user = await getUser();
-            if (user) {
+            let user: UserFormat | false = await STORAGEFNC.getUser();
+            if (user && user.name) {
                 dispatch(CUSTOMCACHE.currentSetUser(user));
             } else {
-                navigation.navigate('OnBoarding' as never);
+                navigation.navigate('Onboard' as never);
             }
         };
         fetchUser();

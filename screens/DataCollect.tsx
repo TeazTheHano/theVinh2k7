@@ -25,13 +25,12 @@ export default function DataCollect({ route }: any) {
     const [age, setAge] = React.useState('')
     const [imgAddress, setImgAddress] = React.useState('')
 
-    const [userData, setUserData] = React.useState<FORMATDATA.UserFormat>({ name: userName, age: age, imgAddress: '' })
     const required = [userName, age]
     const list = [userName, age, imgAddress]
 
     useEffect(() => {
         STORAGEFNC.getUser().then((res) => {
-            if (res) {
+            if (res && res.name !== '') {
                 dispatch(CUSTOMCACHE.currentSetUser(res))
                 navigation.navigate('BottomTab' as never);
             }
@@ -56,27 +55,43 @@ export default function DataCollect({ route }: any) {
             Alert.alert('Please fill in all fields');
             return;
         }
-        if (act && currentStep < list.length - 1) {
-            setShowGoBack(false);
-            setCurrentStep(currentStep + 1);
-        } else if (!act && currentStep > 0) {
-            setCurrentStep(currentStep - 1);
-        } else if (act && currentStep === list.length - 1) {
-            if (userData.name === '' || userData.age === '') {
-                STORAGEFNC.saveUser(userData).then((res) => {
-                    if (res) {
-                        console.log('Data saved');
-                        navigation.navigate('BottomTab' as never);
-                        dispatch(CUSTOMCACHE.currentSetUser(userData))
-                    }
-                })
-            }
 
-        } else if (!act && currentStep === 0) {
-            setShowGoBack(true);
-            if (!act && showGoBack) {
-                navigation.goBack();
+        if (act) {
+            if (currentStep < list.length - 1) {
+                setShowGoBack(false);
+                setCurrentStep(currentStep + 1);
+            } else if (currentStep === list.length - 1) {
+                handleFinalStep();
             }
+        } else {
+            if (currentStep > 0) {
+                setCurrentStep(currentStep - 1);
+            } else if (currentStep === 0) {
+                handleGoBack();
+            }
+        }
+    }
+
+    function handleFinalStep() {
+        let userData: FORMATDATA.UserFormat = {
+            name: userName,
+            age: age,
+            imgAddress: imgAddress
+        };
+        if (userData.name !== '' || userData.age !== '') {
+            STORAGEFNC.saveUser(userData).then((res) => {
+                if (res) {
+                    dispatch(CUSTOMCACHE.currentSetUser(userData));
+                    navigation.navigate('BottomTab' as never);
+                }
+            });
+        }
+    }
+
+    function handleGoBack() {
+        setShowGoBack(true);
+        if (showGoBack) {
+            navigation.goBack();
         }
     }
 

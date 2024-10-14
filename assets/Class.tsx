@@ -834,6 +834,34 @@ export class TopNav2 extends Component<{
     }
 }
 
+export class TopBarWithAvatarIMGand2RightIcon extends Component<{
+    title: string
+    avatarIMG: any
+    rightIcon1: any
+    rightIcon1Press?: () => void
+    avatarPress?: () => void
+    customStyle?: any
+}> {
+    render() {
+        const { avatarIMG, rightIcon1, rightIcon1Press, title, avatarPress, customStyle } = this.props;
+        return (
+            <ViewRowBetweenCenter style={[styles.padding4vw, styles.bgcolorWhite, customStyle]}>
+                <Inter20Bold style={{ color: NGHIASTYLE.NghiaGray700 }}>{title}</Inter20Bold>
+                <ViewRowBetweenCenter style={[styles.gap3vw]}>
+                    <TouchableOpacity
+                        style={[styles.borderRadius100, styles.padding1vw, { backgroundColor: '#F2F4F7' }]}
+                        onPress={avatarPress ? avatarPress : undefined}>
+                        {avatarIMG ? <Image source={{ uri: avatarIMG }} style={[styles.borderRadius100, { width: vw(6), height: vw(6) }] as ImageStyle} /> : <View style={[styles.borderRadius100, styles.bgcolorBlack, { width: vw(6), height: vw(6) }]} />}
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={rightIcon1Press ? rightIcon1Press : undefined}>
+                        {rightIcon1}
+                    </TouchableOpacity>
+                </ViewRowBetweenCenter>
+            </ViewRowBetweenCenter>
+        );
+    }
+}
+
 export class LowBtn extends Component<{
     title: string,
     onPress: () => void,
