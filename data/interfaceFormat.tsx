@@ -4,6 +4,13 @@ export interface UserFormat {
     imgAddress: string;
 }
 
+export interface AuthorFormat {
+    id: number;
+    name: string;
+    imgAddress: any;
+    bio: string;
+}
+
 export interface BlogPostFormat {
     id: number;
     title: string;
@@ -12,27 +19,28 @@ export interface BlogPostFormat {
     readTime: string;
     uploadDate: Date;
     detail: BlogPostDetailFormat;
+    view?: number;
+    author?: AuthorFormat;
 }
 
 export interface BlogPostDetailFormat {
-    timeHappen: String;
-    context: String;
-    mainStory: String;
-    result: String;
+    timeHappen?: String;
+    context: string | Array<string | string[]>;
+    mainStory: string | Array<string | string[]>;
+    result: string | Array<string | string[]>;
     image: any[];
-    links: string[];
+    links?: string[];
 }
 
-export interface PostCartFormat {
+export interface PodcastFormat {
     id: number;
     title: string;
-    numEps: number;
     imgAddress: any;
     uploadDate: Date;
-    detail: PostCartEpsFormat[];
+    detail: PodcastEpsFormat[];
 }
 
-export interface PostCartEpsFormat {
+export interface PodcastEpsFormat {
     id: number;
     title: string;
     imgAddress: any;
@@ -42,7 +50,7 @@ export interface PostCartEpsFormat {
 export interface ThisDayThatYearFormat {
     id: number;
     title: string;
-    timePoint: Date;
+    timePoint: string;
     content: string;
     detail: BlogPostDetailFormat;
 }

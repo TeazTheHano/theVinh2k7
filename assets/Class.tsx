@@ -183,6 +183,16 @@ export class ViewColStartCenter extends Component<{ children?: React.ReactNode, 
     }
 }
 
+export class ViewColStartBetween extends Component<{ children?: React.ReactNode, style?: any }> {
+    render() {
+        return (
+            <View style={[styles.flexCol, styles.justifyContentSpaceBetween, this.props.style]}>
+                {this.props.children}
+            </View>
+        )
+    }
+}
+
 // ____________________END OF UNIVERSAL CLASS_______________________
 
 // ____________________START OF FONT_______________________
@@ -845,7 +855,7 @@ export class TopBarWithAvatarIMGand2RightIcon extends Component<{
     render() {
         const { avatarIMG, rightIcon1, rightIcon1Press, title, avatarPress, customStyle } = this.props;
         return (
-            <ViewRowBetweenCenter style={[styles.padding4vw, styles.bgcolorWhite, customStyle]}>
+            <ViewRowBetweenCenter style={[styles.padding4vw, customStyle]}>
                 <Inter20Bold style={{ color: NGHIASTYLE.NghiaGray700 }}>{title}</Inter20Bold>
                 <ViewRowBetweenCenter style={[styles.gap3vw]}>
                     <TouchableOpacity
@@ -1087,6 +1097,50 @@ export class BoardingPicking extends Component<{
                     )
                 })}
             </View>
+        )
+    }
+}
+
+export class SectionTitleAndRightArrow extends Component<{
+    title: string,
+    titleFontClass?: ComponentType<{ children: React.ReactNode }>,
+    fnc: () => void,
+    titleColor?: string,
+    arrowColor?: string,
+}> {
+    render() {
+        const { title, fnc, titleColor, arrowColor } = this.props;
+        const TitleFontClass = this.props.titleFontClass ? this.props.titleFontClass : Inter16Bold;
+        return (
+            <ViewRowBetweenCenter style={[styles.paddingH6vw, styles.paddingV2vw]}>
+                <TitleFontClass style={[{ color: titleColor ? titleColor : clrStyle.black }]}>{title}</TitleFontClass>
+                <TouchableOpacity onPress={fnc}>
+                    {SVG.sharpRightArrow(vw(6), vw(6), arrowColor ? arrowColor : clrStyle.black)}
+                </TouchableOpacity>
+            </ViewRowBetweenCenter>
+        )
+    }
+}
+
+export class TopNav3ItemWithTitle extends Component<{
+    title: string,
+    icon: any,
+    fnc: () => void,
+    customStyle?: any,
+    nav: any,
+}> {
+    render() {
+        const { title, icon, fnc, customStyle, nav } = this.props;
+        return (
+            <ViewRowBetweenCenter style={[styles.w100, styles.paddingH6vw]}>
+                <TouchableOpacity onPress={() => nav.goBack()}>
+                    {SVG.sharpLeftArrow(vw(6), vw(6), clrStyle.black)}
+                </TouchableOpacity>
+                <Inter20Bold style={[styles.paddingH2vw, styles.textCenter, { color: clrStyle.black }]}>{title}</Inter20Bold>
+                <TouchableOpacity onPress={fnc} style={[styles.padding2vw]}>
+                    {icon}
+                </TouchableOpacity>
+            </ViewRowBetweenCenter>
         )
     }
 }

@@ -66,7 +66,7 @@ export const onShare = async () => {
     }
 };
 
-export const ListGen = (data: string | Array<string | string[]>, FontClass1st: ComponentType<any>, useColor: string = clrStyle.white as string, FontClass2nd: ComponentType<any> = FontClass1st, bullet1st: string = '1', bullet2nd: string = '-', textIndent2nd: any = 0) => {
+export const ListGen = (customStyle: any, data: string | Array<string | string[]>, FontClass1st: ComponentType<any>, useColor: string = clrStyle.white as string, bullet1st: string = '1', FontClass2nd: ComponentType<any> = FontClass1st, bullet2nd: string = '-', textIndent2nd: any = 0) => {
     function bulletMark(bullet: string, index: number) {
         let i = index == 0 ? 0 : index % 2 == 0 ? index / 2 : index
         if (bullet === 'a') {
@@ -134,7 +134,7 @@ export const ListGen = (data: string | Array<string | string[]>, FontClass1st: C
         <View>
             {typeof data == 'string' ?
 
-                <FontClass1st>{data}</FontClass1st>
+                <FontClass1st style={{ ...customStyle, color: useColor }}>{data}</FontClass1st>
 
                 : data.map((item, index) => {
                     if (typeof item === 'string') {
@@ -151,7 +151,7 @@ export const ListGen = (data: string | Array<string | string[]>, FontClass1st: C
                                     return (
                                         <View key={subIndex} style={[styles.flexRow]}>
                                             <FontClass2nd style={{ color: useColor }}>{bulletMark(bullet2nd, subIndex)} </FontClass2nd>
-                                            <FontClass2nd style={{ color: useColor }}>{subItem}</FontClass2nd>
+                                            <FontClass2nd style={{ color: useColor, ...customStyle }}>{subItem}</FontClass2nd>
                                         </View>
                                     )
                                 })}
@@ -255,7 +255,7 @@ export const requestCameraPermission = async () => {
                 },
             );
             console.log('Camera permission:', granted);
-            
+
             return granted === PermissionsAndroid.RESULTS.GRANTED;
         } catch (err) {
             console.warn(err);

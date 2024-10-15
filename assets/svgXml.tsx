@@ -111,118 +111,6 @@ export const curveRightArrow = (w: any = '100%', h: any = '100%', color: any = '
     );
 }
 
-export const homeIcon = (w: any = '100%', h: any = '100%', showText: boolean = false) => {
-    const xml = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M6.50008 6.99991C7.96143 5.53856 9.59363 4.4189 10.6976 3.74078C11.5022 3.24656 12.498 3.24656 13.3026 3.74078C14.4065 4.4189 16.0387 5.53856 17.5001 6.99991C20.6685 10.1683 20.5001 11.9999 20.5001 14.9999C20.5001 16.4097 20.3897 17.5987 20.2726 18.4631C20.1494 19.3725 19.3563 19.9999 18.4385 19.9999H17.0001C15.8955 19.9999 15.0001 19.1045 15.0001 17.9999V15.9999C15.0001 15.2043 14.684 14.4412 14.1214 13.8786C13.5588 13.316 12.7957 12.9999 12.0001 12.9999C11.2044 12.9999 10.4414 13.316 9.87877 13.8786C9.31616 14.4412 9.00009 15.2043 9.00009 15.9999V17.9999C9.00009 19.1045 8.10466 19.9999 7.00009 19.9999H5.56164C4.64391 19.9999 3.85074 19.3725 3.72757 18.4631C3.61051 17.5987 3.50009 16.4097 3.50009 14.9999C3.50009 11.9999 3.33169 10.1683 6.50008 6.99991Z" stroke="#808797" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-`
-    return (
-        <View style={[styles.flexColCenter, styles.w100, styles.paddingV2vh,]}>
-            <SvgXml xml={xml} width={w} height={h} />
-            {showText ? <Nunito12Reg style={{ color: clrStyle.grey2 }}>Home</Nunito12Reg> : null}
-        </View>
-    );
-}
-
-export const userIcon = (w: any = '100%', h: any = '100%', showText: boolean = false) => {
-    const xml = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M17.5 21.0001H6.5C5.11929 21.0001 4 19.8808 4 18.5001C4 14.4194 10 14.5001 12 14.5001C14 14.5001 20 14.4194 20 18.5001C20 19.8808 18.8807 21.0001 17.5 21.0001Z" stroke="#808797" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#808797" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-`
-    return (
-        <View style={[styles.flexColCenter, styles.w100, styles.paddingV2vh,]}>
-            <SvgXml xml={xml} width={w} height={h} />
-            {showText ? <Nunito12Reg style={{ color: clrStyle.grey2 }}>User</Nunito12Reg> : null}
-        </View>
-    );
-}
-
-export const compareIcon = (w: any = '100%', h: any = '100%', showText: boolean = false) => {
-    const xml = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M21 7L14.4142 13.5858C13.6332 14.3668 12.3668 14.3668 11.5858 13.5858L10.4142 12.4142C9.63316 11.6332 8.36683 11.6332 7.58579 12.4142L3 17M21 7H15M21 7V13" stroke="#808797" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-`
-    return (
-        <View style={[styles.flexColCenter, styles.w100, styles.paddingV2vh,]}>
-            <SvgXml xml={xml} width={w} height={h} />
-            {showText ? <Nunito12Reg style={{ color: clrStyle.grey2 }}>Compare</Nunito12Reg> : null}
-        </View>
-    );
-}
-
-export const settingIcon = (w: any = '100%', h: any = '100%', showText: boolean = false) => {
-    const xml = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M11 3H13C13.5523 3 14 3.44772 14 4V4.56879C14 4.99659 14.2871 5.36825 14.6822 5.53228C15.0775 5.69638 15.5377 5.63384 15.8403 5.33123L16.2426 4.92891C16.6331 4.53838 17.2663 4.53838 17.6568 4.92891L19.071 6.34312C19.4616 6.73365 19.4615 7.36681 19.071 7.75734L18.6688 8.1596C18.3661 8.46223 18.3036 8.92247 18.4677 9.31774C18.6317 9.71287 19.0034 10 19.4313 10L20 10C20.5523 10 21 10.4477 21 11V13C21 13.5523 20.5523 14 20 14H19.4312C19.0034 14 18.6318 14.2871 18.4677 14.6822C18.3036 15.0775 18.3661 15.5377 18.6688 15.8403L19.071 16.2426C19.4616 16.6331 19.4616 17.2663 19.071 17.6568L17.6568 19.071C17.2663 19.4616 16.6331 19.4616 16.2426 19.071L15.8403 18.6688C15.5377 18.3661 15.0775 18.3036 14.6822 18.4677C14.2871 18.6318 14 19.0034 14 19.4312V20C14 20.5523 13.5523 21 13 21H11C10.4477 21 10 20.5523 10 20V19.4313C10 19.0034 9.71287 18.6317 9.31774 18.4677C8.92247 18.3036 8.46223 18.3661 8.1596 18.6688L7.75732 19.071C7.36679 19.4616 6.73363 19.4616 6.34311 19.071L4.92889 17.6568C4.53837 17.2663 4.53837 16.6331 4.92889 16.2426L5.33123 15.8403C5.63384 15.5377 5.69638 15.0775 5.53228 14.6822C5.36825 14.2871 4.99659 14 4.56879 14H4C3.44772 14 3 13.5523 3 13V11C3 10.4477 3.44772 10 4 10L4.56877 10C4.99658 10 5.36825 9.71288 5.53229 9.31776C5.6964 8.9225 5.63386 8.46229 5.33123 8.15966L4.92891 7.75734C4.53838 7.36681 4.53838 6.73365 4.92891 6.34313L6.34312 4.92891C6.73365 4.53839 7.36681 4.53839 7.75734 4.92891L8.15966 5.33123C8.46228 5.63386 8.9225 5.6964 9.31776 5.53229C9.71288 5.36825 10 4.99658 10 4.56876V4C10 3.44772 10.4477 3 11 3Z" stroke="#808797" stroke-width="1.5"/>
-<path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" stroke="#808797" stroke-width="1.5"/>
-</svg>
-`
-    return (
-        <View style={[styles.flexColCenter, styles.w100, styles.paddingV2vh,]}>
-            <SvgXml xml={xml} width={w} height={h} />
-            {showText ? <Nunito12Reg style={{ color: clrStyle.grey2 }}>Settings</Nunito12Reg> : null}
-        </View>
-    );
-}
-
-export const homeIconActive = (w: any = '100%', h: any = '100%', showText: boolean = false) => {
-    const xml = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="24" height="24" rx="6" fill="#3E3792"/>
-<path d="M6.50008 6.99991C7.96143 5.53856 9.59363 4.4189 10.6976 3.74078C11.5022 3.24656 12.498 3.24656 13.3026 3.74078C14.4065 4.4189 16.0387 5.53856 17.5001 6.99991C20.6685 10.1683 20.5001 11.9999 20.5001 14.9999C20.5001 16.4097 20.3897 17.5987 20.2726 18.4631C20.1494 19.3725 19.3563 19.9999 18.4385 19.9999H17.0001C15.8955 19.9999 15.0001 19.1045 15.0001 17.9999V15.9999C15.0001 15.2043 14.684 14.4412 14.1214 13.8786C13.5588 13.316 12.7957 12.9999 12.0001 12.9999C11.2044 12.9999 10.4414 13.316 9.87877 13.8786C9.31616 14.4412 9.00009 15.2043 9.00009 15.9999V17.9999C9.00009 19.1045 8.10466 19.9999 7.00009 19.9999H5.56164C4.64391 19.9999 3.85074 19.3725 3.72757 18.4631C3.61051 17.5987 3.50009 16.4097 3.50009 14.9999C3.50009 11.9999 3.33169 10.1683 6.50008 6.99991Z" stroke="#FCFCFC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-`
-    return (
-        <View style={[styles.flexColCenter, styles.w100, styles.paddingV2vh,]}>
-            <SvgXml xml={xml} width={w} height={h} />
-            {showText ? <Nunito12Bold style={{ color: clrStyle.main5 }}>Home</Nunito12Bold> : null}
-        </View>
-    );
-}
-
-export const userIconActive = (w: any = '100%', h: any = '100%', showText: boolean = false) => {
-    const xml = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="24" height="24" rx="6" fill="#3E3792"/>
-<path d="M17.5 21.0001H6.5C5.11929 21.0001 4 19.8808 4 18.5001C4 14.4194 10 14.5001 12 14.5001C14 14.5001 20 14.4194 20 18.5001C20 19.8808 18.8807 21.0001 17.5 21.0001Z" stroke="#FCFCFC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#FCFCFC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-`
-    return (
-        <View style={[styles.flexColCenter, styles.w100, styles.paddingV2vh,]}>
-            <SvgXml xml={xml} width={w} height={h} />
-            {showText ? <Nunito12Bold style={{ color: clrStyle.main5 }}>User</Nunito12Bold> : null}
-        </View>
-    );
-}
-
-export const compareIconActive = (w: any = '100%', h: any = '100%', showText: boolean = false) => {
-    const xml = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="24" height="24" rx="6" fill="#3E3792"/>
-<path d="M21 7L14.4142 13.5858C13.6332 14.3668 12.3668 14.3668 11.5858 13.5858L10.4142 12.4142C9.63316 11.6332 8.36683 11.6332 7.58579 12.4142L3 17M21 7H15M21 7V13" stroke="#FCFCFC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>
-`
-    return (
-        <View style={[styles.flexColCenter, styles.w100, styles.paddingV2vh,]}>
-            <SvgXml xml={xml} width={w} height={h} />
-            {showText ? <Nunito12Bold style={{ color: clrStyle.main5 }}>Compare</Nunito12Bold> : null}
-        </View>
-    );
-}
-
-export const settingIconActive = (w: any = '100%', h: any = '100%', showText: boolean = false) => {
-    const xml = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="24" height="24" rx="6" fill="#3E3792"/>
-<path d="M11 3H13C13.5523 3 14 3.44772 14 4V4.56879C14 4.99659 14.2871 5.36825 14.6822 5.53228C15.0775 5.69638 15.5377 5.63384 15.8403 5.33123L16.2426 4.92891C16.6331 4.53838 17.2663 4.53838 17.6568 4.92891L19.071 6.34312C19.4616 6.73365 19.4615 7.36681 19.071 7.75734L18.6688 8.1596C18.3661 8.46223 18.3036 8.92247 18.4677 9.31774C18.6317 9.71287 19.0034 10 19.4313 10L20 10C20.5523 10 21 10.4477 21 11V13C21 13.5523 20.5523 14 20 14H19.4312C19.0034 14 18.6318 14.2871 18.4677 14.6822C18.3036 15.0775 18.3661 15.5377 18.6688 15.8403L19.071 16.2426C19.4616 16.6331 19.4616 17.2663 19.071 17.6568L17.6568 19.071C17.2663 19.4616 16.6331 19.4616 16.2426 19.071L15.8403 18.6688C15.5377 18.3661 15.0775 18.3036 14.6822 18.4677C14.2871 18.6318 14 19.0034 14 19.4312V20C14 20.5523 13.5523 21 13 21H11C10.4477 21 10 20.5523 10 20V19.4313C10 19.0034 9.71287 18.6317 9.31774 18.4677C8.92247 18.3036 8.46223 18.3661 8.1596 18.6688L7.75732 19.071C7.36679 19.4616 6.73363 19.4616 6.34311 19.071L4.92889 17.6568C4.53837 17.2663 4.53837 16.6331 4.92889 16.2426L5.33123 15.8403C5.63384 15.5377 5.69638 15.0775 5.53228 14.6822C5.36825 14.2871 4.99659 14 4.56879 14H4C3.44772 14 3 13.5523 3 13V11C3 10.4477 3.44772 10 4 10L4.56877 10C4.99658 10 5.36825 9.71288 5.53229 9.31776C5.6964 8.9225 5.63386 8.46229 5.33123 8.15966L4.92891 7.75734C4.53838 7.36681 4.53838 6.73365 4.92891 6.34313L6.34312 4.92891C6.73365 4.53839 7.36681 4.53839 7.75734 4.92891L8.15966 5.33123C8.46228 5.63386 8.9225 5.6964 9.31776 5.53229C9.71288 5.36825 10 4.99658 10 4.56876V4C10 3.44772 10.4477 3 11 3Z" stroke="#FCFCFC" stroke-width="1.5"/>
-<path d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z" stroke="#FCFCFC" stroke-width="1.5"/>
-</svg>
-`
-    return (
-        <View style={[styles.flexColCenter, styles.w100, styles.paddingV2vh,]}>
-            <SvgXml xml={xml} width={w} height={h} />
-            {showText ? <Nunito12Bold style={{ color: clrStyle.main5 }}>Settings</Nunito12Bold> : null}
-        </View>
-    );
-}
-
 // search
 export const xIcon = (w: any = '100%', h: any = '100%', color: any = "#808797") => {
     const xml = `<svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -324,7 +212,60 @@ export const bellIcon = (w: any = '100%', h: any = '100%') => {
     )
 }
 
-// export const NAME = (w: any = '100%', h: any = '100%') => {
+export const calendar = (w: any = '100%', h: any = '100%') => {
+    const xml = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 2V5" stroke="#98A2B3" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M16 2V5" stroke="#98A2B3" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M3.5 9.08997H20.5" stroke="#98A2B3" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z" stroke="#98A2B3" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.6947 13.7H15.7037" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M15.6947 16.7H15.7037" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11.9955 13.7H12.0045" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11.9955 16.7H12.0045" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.29431 13.7H8.30329" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M8.29431 16.7H8.30329" stroke="#98A2B3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    `
+    return (
+        <SvgXml xml={xml} width={w} height={h} />
+    )
+}
+
+export const clock = (w: any = '100%', h: any = '100%') => {
+    const xml = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M22 12C22 17.52 17.52 22 12 22C6.48 22 2 17.52 2 12C2 6.48 6.48 2 12 2C17.52 2 22 6.48 22 12Z" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.71 15.18L12.61 13.33C12.07 13.01 11.63 12.24 11.63 11.61V7.51001" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`
+    return (
+        <SvgXml xml={xml} width={w} height={h} />
+    )
+}
+
+export const eye = (w: any = '100%', h: any = '100%') => {
+    const xml = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.58 12C15.58 13.98 13.98 15.58 12 15.58C10.02 15.58 8.42004 13.98 8.42004 12C8.42004 10.02 10.02 8.42004 12 8.42004C13.98 8.42004 15.58 10.02 15.58 12Z" stroke="#4E5BA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 20.27C15.53 20.27 18.82 18.19 21.11 14.59C22.01 13.18 22.01 10.81 21.11 9.39997C18.82 5.79997 15.53 3.71997 12 3.71997C8.46997 3.71997 5.17997 5.79997 2.88997 9.39997C1.98997 10.81 1.98997 13.18 2.88997 14.59C5.17997 18.19 8.46997 20.27 12 20.27Z" stroke="#4E5BA6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`
+    return (
+        <SvgXml xml={xml} width={w} height={h} />
+    )
+}
+
+export const save = (w: any = '100%', h: any = '100%', color?: any) => {
+    const xml = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M12.89 5.88H5.10999C3.39999 5.88 2 7.27999 2 8.98999V20.35C2 21.8 3.04 22.42 4.31 21.71L8.23999 19.52C8.65999 19.29 9.34 19.29 9.75 19.52L13.68 21.71C14.95 22.42 15.99 21.8 15.99 20.35V8.98999C16 7.27999 14.6 5.88 12.89 5.88Z" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 8.98999V20.35C16 21.8 14.96 22.41 13.69 21.71L9.76001 19.52C9.34001 19.29 8.65999 19.29 8.23999 19.52L4.31 21.71C3.04 22.41 2 21.8 2 20.35V8.98999C2 7.27999 3.39999 5.88 5.10999 5.88H12.89C14.6 5.88 16 7.27999 16 8.98999Z" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M22 5.10999V16.47C22 17.92 20.96 18.53 19.69 17.83L16 15.77V8.98999C16 7.27999 14.6 5.88 12.89 5.88H8V5.10999C8 3.39999 9.39999 2 11.11 2H18.89C20.6 2 22 3.39999 22 5.10999Z" stroke="#98A2B3" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+`
+    return (
+        <SvgXml xml={xml} width={w} height={h} />
+    )
+}
+
+// export const NAME = (w: any = '100%', h: any = '100%', color?:any) => {
 //     const xml = ``
 //     return (
 //         <SvgXml xml={xml} width={w} height={h} />

@@ -17,6 +17,7 @@ import Podcast from './screens/Podcast';
 import Explore from './screens/Explore';
 import User from './screens/User';
 // >>>>>>>>>>
+import BlogView from './screens/BlogView';
 
 // ____________________END OF IMPORT_______________________
 
@@ -34,6 +35,8 @@ function App(): React.JSX.Element {
           <Stack.Screen name="Podcast" component={Podcast} />
           <Stack.Screen name="Explore" component={Explore} />
           <Stack.Screen name="User" component={User} />
+          {/* >>>> */}
+          <Stack.Screen name="BlogView" component={BlogView} />
         </Stack.Navigator>
       </NavigationContainer>
     </ProviderTotal>

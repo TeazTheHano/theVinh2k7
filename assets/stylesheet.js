@@ -1408,6 +1408,14 @@ const styles = StyleSheet.create({
         elevation: vw(1),
     },
 
+    shadowW1H1p5Black: {
+        shadowColor: 'black',
+        shadowOffset: { width: vw(1), height: vw(1.5) },
+        shadowOpacity: 0.2,
+        shadowRadius: vw(2),
+        elevation: vw(2),
+    },
+
     bgcolorBlack: {
         backgroundColor: 'black',
     },
